@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <span th:replace="index :: bootstrapImports"></span>
+    <span th:replace="~{index :: bootstrapImports}"></span>
     <title>Home private page</title>
 </head>
 <body>
+<header th:insert="~{index :: #navbarNavDropdown}"></header>
     <main>
-        <h1 class="text-center">Home Page</h1>
+        <h1 class="text-center">Home private Page</h1>
     </main>
 </body>
 </html>
