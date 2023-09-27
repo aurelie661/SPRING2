@@ -24,7 +24,7 @@ public class SecurityConfig {
                   .authenticationEntryPoint(customAuthenticationEntryPoint)
                   .and()
                   .authorizeHttpRequests()
-                  .requestMatchers("/public","/public/**").permitAll()
+                  .requestMatchers("/public","/public/**", "/auth/**").permitAll()
                   .requestMatchers("/private","/private/**").authenticated();
           return httpSecurity.build();
      }

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/private")
-public class PivateController {
+@RequiredArgsConstructor
+public class PrivateController {
     @GetMapping
     public String getPrivateHome(){
         return "views/home";

@@ -37,4 +37,24 @@ public class AuthController {
 
         return "redirect:/private";
     }
+
+    @GetMapping("authenticate")
+    public String getAuthenticationForm(Model model) {
+        model.addAttribute("mode", "authenticate");
+        model.addAttribute("formValues", AuthenticationRequests.builder().build());
+
+        return "auth/register";
+    }
+
+    @PostMapping("authenticate")
+    public String authenticateHandler(AuthenticationRequests authenticationRequests, HttpServletRequest httpServletRequest) {
+        authService.authenticate(authenticationRequests);
+
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        HttpSession httpSession = httpServletRequest.getSession();
+
+        httpSession.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+
+        return "redirect:/private";
+    }
 }
