@@ -13,6 +13,11 @@ import java.io.IOException;
 public class CustomAuthenticationEntryPoint  implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        response.sendRedirect(request.getContextPath() + "/auth/authenticate");
+       if(request.getRequestURI().startsWith("/private")){
+           response.sendError(HttpServletResponse.SC_ACCEPTED, authException.getMessage());
+       }else{
+           response.sendRedirect(request.getContextPath() + "/auth/authenticate");
+       }
+
     }
 }
